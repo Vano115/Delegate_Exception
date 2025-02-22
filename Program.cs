@@ -47,51 +47,44 @@ namespace Delegate_Exception
                     if (input == 4)
                     {
                         Console.WriteLine(str[2]);
+                        throw new NullReferenceException();
                     }
                     // Демонстрация перехвата 1 системного исключения
 
                     if (input == 5)
                     { 
                         Console.WriteLine(arrayInput[5]);
+                        throw new IndexOutOfRangeException();
                     }
                     // Демонстрация перехвата 2 системного исключения
+                    Console.ReadKey();
                 }
-                catch (Exception ex)
+                catch (FormatException)
                 {
-                    if (ex is NonNeedNumberException)
-                    {
-                        Console.WriteLine("Введённое значение не равно 4 или 5");
-                    }
-
-                    if (ex is FormatException)
-                    {
-                        Console.WriteLine("Введено не целое число");
-                    }
-
-                    if (ex is NullException)
-                    {
-                        Console.WriteLine("Введён 0");
-                    }
-                    if (ex is IndexOutOfRangeException)
-                    {
-                        Console.WriteLine("Несуществующий элемент массива");
-                    }
-                    if (ex is NullReferenceException)
-                    {
-                        Console.WriteLine("Пустая строковая переменная");
-                    }
+                    Console.WriteLine("Неверный формат");
+                }
+                catch (IndexOutOfRangeException)
+                {
+                    Console.WriteLine("Заданое значение выходит за границы массива");
+                }
+                catch (NullReferenceException)
+                {
+                    Console.WriteLine("Пустая строковая переменная");
+                }
+                catch (NonNeedNumberException)
+                {
+                    Console.WriteLine("Ненужное значение");
+                }
+                catch (NullException)
+                {
+                    Console.WriteLine("Введено значение 0");
                 }
             }
 
             // Задание 2
 
-            List<string> surnames = new List<string>();
-            surnames.Add("Иванов");
-            surnames.Add("Бардов");
-            surnames.Add("Скопцов");
-            surnames.Add("Вишняков");
-            surnames.Add("Иванова");
-            // Создание списка-примера
+            List<string> surnames = new List<string> {"Иванов", "Бардов" , "Скопцов" , "Вишняков", "Иванова"};
+            // Создание списка-примера !!!Исправлено
 
             Console.WriteLine("Не сортированный список:");
             foreach (string s in surnames)
@@ -127,6 +120,11 @@ namespace Delegate_Exception
             // Вывод обработанного списка
         }
 
+        /// <summary>
+        /// Насколько я знаю таким образом оформляется описание методов
+        /// </summary>
+        /// <param name="number">Принимает 1 или 2 в зависимости от нужного метода сортировки</param>
+        /// <param name="surnames">Сортируемый список</param>
         static void ChoicedSort(int number, List<string> surnames)
         {
             switch (number)
@@ -138,6 +136,5 @@ namespace Delegate_Exception
                     break;
             }
         }
-        // Метод-сортировщик
     }
 }
