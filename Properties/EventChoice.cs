@@ -32,7 +32,7 @@ namespace Delegate_Exception.Properties
             }
             if (number != 1 && number != 2)
             {
-                throw new NonNeedNumberException("Некорректный ввод");
+                throw new NonNeedNumberException();
             }
 
             OnChoiceEvent(number, list);

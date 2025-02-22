@@ -100,16 +100,13 @@ namespace Delegate_Exception
             {
                 eventChoice.CheckNum(surnames);
             }
-            catch(Exception ex)
+            catch(FormatException)
             {
-                if (ex is FormatException)
-                {
                     Console.WriteLine("Введено не число");
-                }
-                if (ex is NonNeedNumberException)
-                {
-                    Console.WriteLine("Введено неподходящее число");
-                }
+            }
+            catch (NonNeedNumberException)
+            {
+                Console.WriteLine("Введено неподходящее число");
             }
 
             Console.WriteLine("Сортированый список:");
